@@ -1,0 +1,102 @@
+Como estructurar un ciclo for complejo en Mumps
+
+for i=1:1:100 do
+. for j=1:1:100 do
+..for k=1:1:100 do
+... set ^mat1(i,j,k)=0
+
+----------------------------------------------------------
+
+Como utilizar Post-Conditions para controlar un ciclo For
+
+for i=1:1:100 quit:'$data(^a(i))  write ^a(i)
+
+
+---------------------------------------------------------
+
+Diferentes maneras de utilizar The Indirection Operator(@)
+
+kill ^x
+set ^x(1)=99
+set ^x(5)=999
+set v="^x(y)"
+set y=1
+set x=$order(@v) ; equivalent to ^x(1)
+write x,! ; writes next index of ^x(1): 5
+set v1="^x"
+set x=$order(@(v1_"("_y_")")) ;
+write x,!              ; writes 5
+
+
+---------------------------------------------------------
+
+Comando $Test 
+
+set a=1,b=2
+if a=1 do ; $test becomes true
+. set a=0
+. if b=3 do ; $test becomes false
+.. set b=0 ; not executed
+. else  do ; executed 
+.. set b=10   ; executed
+. write $test," ",b,! ; $test is false
+ write $test," ",b,! ; $test restored to true
+
+-----------------------------------------------------------
+
+Comando $Quit 
+
+for do quit:f=1 ; this quit, when executed, terminates the loop
+. read a
+. if '$test set f=1 quit ;this quit returns to the do
+. write a,!
+
+-----------------------------------------------------------
+
+Navegando Arrays 
+
+ set i=""
+  for  do
+  . set i=$order(^a(i))
+  . if i="" break
+  . write "row ",i," "
+  . if $data(^a(i))>1 set j="" do
+  .. set j=$order(^a(i,j))
+  .. if j="" break
+  .. write j," " ; elements of the row on the same line
+  . write ! ; end of row: write new line
+
+
+------------------------------------------------------------
+
+Funciones
+
+set i=100
+set x=$$sub(i)
+write x," ",i,!  ; writes 500 100
+halt
+
+sub(i) 
+set i=i*5
+quit i
+
+
+------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

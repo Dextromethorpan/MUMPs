@@ -1,0 +1,7 @@
+;3-Dimensional Matrix
+;Create a 3-D matrix :
+
+do for i=1:1:100 for j=1:1:100 for k=1:1:100  set ^mat1(i,j,k)=0
+	write ^mat1(1,1,1),!
+	write ^mat1(2,2,2),!
+

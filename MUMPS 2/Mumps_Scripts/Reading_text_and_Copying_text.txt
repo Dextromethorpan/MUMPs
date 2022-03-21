@@ -1,0 +1,20 @@
+;Reading an existed file and copying it to write a new file
+;This Script need to be checked, the read function is not
+;working.
+
+do set in="read.txt,old" ;old is to read existed file
+ open 1::in
+ if '$test write "read.txt not found",! halt
+ 
+ set out="new.txt,new"
+ open 2::out 
+ if '$test write "error on ",out,! halt 
+
+ write "copying ...",!
+ ;Read one line and copy it into "new.txt"
+ 
+ use 1 read a,!
+ use 2 write a,!
+ write "done",!
+
+ 

@@ -1,0 +1,14 @@
+;For Command
+
+do for i=1:1:10 write !,i,": " for j=1:1:5 write j," "
+
+;For Command 2
+
+do for i=1:1:10 
+ write i 
+ if i>5 write ! quit ;This quit is not working. Why?.
+ write " ",i*i,!
+
+
+
+ 

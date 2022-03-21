@@ -1,0 +1,11 @@
+;If-Else 
+
+do set a=1
+ if a=1
+ 	write "a is 1",!
+	set a=a*3
+ else
+	write ä is not 1",!
+        set a=a*4
+
+write "a is ",a,!

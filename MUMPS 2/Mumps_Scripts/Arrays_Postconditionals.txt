@@ -1,0 +1,7 @@
+;Access to Mumps Arrays and PostConditionals
+
+do set ^a(1)=100,^a(2)=200,^a(3)=300,^a(2,1)=210,^a(4,1)=410  set x=$data(^a(1))
+ write x,!
+ for i=1:1 if ‘$data(^a(i)) quit  write ^a(i),! 
+ ;this line doesn't print anything 
+ ;the loop is gonna be closed when there is no next node

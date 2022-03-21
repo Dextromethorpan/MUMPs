@@ -1,0 +1,16 @@
+;Indirection operator (@)
+
+do set a="2+2" write @a,!
+ kill ^x
+ set ^x(1)=99
+ set ^x(5)=999
+ set v="^x(y)"
+ set y=1
+ set x=$order(@v) ; equivalent to ^x(1)
+ write x,! ; writes next index of ^x(1): 5
+ set v1="^x"
+ set x=$order(@(v1_"("_y_")")) ;
+ write x,!              ; writes 5
+
+
+ 
